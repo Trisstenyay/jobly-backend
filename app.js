@@ -17,10 +17,18 @@ const morgan = require("morgan");
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: "https://jobby-frontend-45cy.onrender.com"
+}));
+
 app.use(express.json());
 app.use(morgan("tiny"));
 app.use(authenticateJWT);
+
+app.get("/", function (req, res) {
+  res.send("Jobly backend is running");
+});
+
 
 app.use("/auth", authRoutes);
 app.use("/companies", companiesRoutes);
