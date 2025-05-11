@@ -17,10 +17,16 @@ const morgan = require("morgan");
 
 const app = express();
 
-app.options("*", cors()); 
+const cors = require("cors");
+
+// Allow all origins dynamically (not hardcoded)
+app.options("*", cors());  // preflight
 app.use(cors({
-  origin: "https://jobby-frontend-45cy.onrender.com"
+  origin: true,
+  credentials: true
 }));
+
+
 
 app.use(express.json());
 app.use(morgan("tiny"));
