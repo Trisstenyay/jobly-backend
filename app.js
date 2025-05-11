@@ -17,6 +17,7 @@ const morgan = require("morgan");
 
 const app = express();
 
+app.options("*", cors()); 
 app.use(cors({
   origin: "https://jobby-frontend-45cy.onrender.com"
 }));
