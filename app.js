@@ -4,9 +4,7 @@
 
 const express = require("express");
 const cors = require("cors");
-
 const { NotFoundError } = require("./expressError");
-
 const { authenticateJWT } = require("./middleware/auth");
 const authRoutes = require("./routes/auth");
 const companiesRoutes = require("./routes/companies");
@@ -17,16 +15,12 @@ const morgan = require("morgan");
 
 const app = express();
 
-const cors = require("cors");
-
 // Allow all origins dynamically (not hardcoded)
 app.options("*", cors());  // preflight
 app.use(cors({
   origin: true,
   credentials: true
 }));
-
-
 
 app.use(express.json());
 app.use(morgan("tiny"));
